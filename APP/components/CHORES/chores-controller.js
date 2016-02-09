@@ -31,6 +31,12 @@ app.controller('choresController',function($scope){
         responsibleParty:'Vina',
         estTime: 10
     }, 
+    {
+        task:'Unload dishwasher',
+        dueDate: Date.now(),
+        responsibleParty:'Vina',
+        estTime: 10
+    }, 
     ]
     
     $scope.addNewChore = function(){
