@@ -1,0 +1,38 @@
+<html ng-app="Chores">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/styles/style.css">
+</head>
+    <h1>Vina's To Do List</h1>
+    <br>
+<body ng-controller="choresController">
+    <input type="text" ng-model="query" placeholder="Filter"/>
+    <button ng-click="sortOrder='estTime'">Sort Ascend</button>
+    <button ng-click="sortOrder='-estTime'">Sort Descend</button>
+    
+    Current Filter: {{filter}}
+   <br>
+   <br>
+    <div ng-repeat="Chore in Chores | filter:query | orderBy:sortOrder">
+            <span ng-click="deleteChore($index)">X</span>
+        <ul>
+        <li><h4>{{Chore.task | uppercase}}</h4></li>  
+        <li>{{Chore.dueDate  | date}}</li> 
+        <li>{{Chore.estTime}}</li> 
+        </ul>
+        </div>
+        
+        <div>
+            <input type="text" ng-model="newTask.task" placeholder="New Task"/><br/>
+            <input type="text" ng-model="newTask.dueDate" placeholder="Due Date"/><br/>
+            <input type="text" ng-model="newTask.estTime" placeholder="Estimated Time"/><br/>
+            <button ng-click="addNewChore()">Add Chore</button>
+        </div> 
+        
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.2/angular.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/components/chores/chores-controller.js"></script>
+</body>
+</html>
